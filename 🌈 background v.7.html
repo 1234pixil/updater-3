@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0000ff" id="theme-color">
+    <meta name="description" content="Rainbow Tab - Transform your browser tab with smooth animated rainbow colours">
+    <title>🌈 Rainbow Tab</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #0000ff, #8000ff, #ff0066, #ff8800, #ffff00, #00ff66, #00ccff);
+            background-size: 400% 400%;
+            animation: bg 12s ease infinite;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding-bottom: 100px;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes bg {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 0%; }
+            75% { background-position: 0% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            max-width: 700px;
+            width: 100%;
+            padding: 40px 20px 20px;
+            flex: 1;
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 60vh;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: clamp(40px, 8vw, 70px);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 200, 255, 0.6);
+            margin: 0;
+            letter-spacing: 2px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        p {
+            font-size: clamp(16px, 4vw, 24px);
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .download, .copy-info {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-size: clamp(16px, 3vw, 20px);
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            border-radius: 15px;
+            border: none;
+            background: linear-gradient(90deg, #00f, #8a2be2, #f00, #ff8800, #ff0, #0f0, #0ff, #00f);
+            background-size: 300% 300%;
+            animation: rainbow 8s linear infinite;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 200, 255, 0.6), 0 0 60px rgba(138, 43, 226, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .copy-info {
+            background: rgba(255, 255, 255, 0.2);
+            animation: none;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .download:hover, .copy-info:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(0, 200, 255, 0.8), 0 0 90px rgba(138, 43, 226, 0.6);
+        }
+
+        .download:active, .copy-info:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0%; }
+            100% { background-position: 300%; }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 20px;
+            font-size: 14px;
+            opacity: 0.95;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: 999;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.8;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-box h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .copy-feedback {
+            position: fixed;
+            bottom: 130px;
+            right: 20px;
+            background: rgba(0, 255, 100, 0.9);
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .copy-feedback.show {
+            opacity: 1;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            overflow-x: auto;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding-bottom: 120px;
+            }
+
+            .hero-section {
+                min-height: auto;
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .download, .copy-info {
+                font-size: 16px;
+                padding: 14px 28px;
+            }
+
+            .button-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .download, .copy-info {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .info-box {
+                padding: 15px;
+                font-size: 13px;
+            }
+
+            pre {
+                font-size: 11px;
+                padding: 10px;
+            }
+
+            footer {
+                padding: 15px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="hero-section">
+            <h1>🌈 Rainbow Tab</h1>
+            <p>Transform your browser tab with smooth animated rainbow colours.</p>
+
+            <div class="button-container">
+                <button class="download" id="downloadBtn" title="Download Rainbow Tab Extension">
+                    ⬇ DOWNLOAD EXTENSION
+                </button>
+                <button class="copy-info" id="copyBtn" title="Copy Chrome Extension manifest">
+                    📋 EXTENSION INFO
+                </button>
+            </div>
+        </section>
+
+        <div class="info-box">
+            <h3>📦 How to Use</h3>
+            <p>
+                <strong>Option 1: Download & Load</strong>
+                <br>
+                1. Click "DOWNLOAD EXTENSION"
+                <br>
+                2. Extract the ZIP file
+                <br>
+                3. Go to <code>chrome://extensions</code>
+                <br>
+                4. Enable "Developer mode" (top right)
+                <br>
+                5. Click "Load unpacked" and select the folder
+                <br><br>
+                <strong>Option 2: Manual Setup</strong>
+                <br>
+                Create a folder with the manifest.json below and follow steps 3-5 above.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <h3>📄 manifest.json</h3>
+            <pre id="manifestCode">{
+  "manifest_version": 3,
+  "name": "Rainbow Tab",
+  "version": "1.0",
+  "description": "Beautiful rainbow colored new tab page",
+  "action": {
+    "default_title": "Rainbow Tab"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}</pre>
+            <button class="copy-info" id="copyManifestBtn" style="margin-top: 10px; width: 100%;">
+                📋 Copy Manifest
+            </button>
+        </div>
+
+        <div class="info-box">
+            <h3>✨ Features</h3>
+            <p>
+                ✅ Smooth animated rainbow background
+                <br>
+                ✅ Floating title animation
+                <br>
+                ✅ Modern glass-morphism design
+                <br>
+                ✅ Fully responsive on all devices
+                <br>
+                ✅ Easy one-click installation
+                <br>
+                ✅ Works on Chrome 88+
+            </p>
+        </div>
+
+        <div class="info-box">
+            <h3>🔧 Customization</h3>
+            <p>
+                To customize the colors, edit the <code>@keyframes bg</code> section in the CSS:
+                <br><br>
+                Change the color values to your preferences and adjust animation timing as needed. The background will automatically cycle through all specified colors smoothly.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <h3>❓ Troubleshooting</h3>
+            <p>
+                <strong>Extension not showing?</strong>
+                <br>
+                Make sure you enabled Developer mode before loading unpacked.
+                <br><br>
+                <strong>Download button not working?</strong>
+                <br>
+                Try the manual setup option or check your browser permissions.
+                <br><br>
+                <strong>Need help?</strong>
+                <br>
+                Check the Chrome Web Store documentation for more info on loading extensions.
+            </p>
+        </div>
+    </main>
+
+    <footer>Made with ❤️ for Chrome | © 2026 Ethan. All rights reserved.</footer>
+
+    <div class="copy-feedback" id="copyFeedback">✓ Copied to clipboard!</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        // Theme color animation
+        const colors = [
+            "#0000ff",
+            "#4b6cff",
+            "#8000ff",
+            "#ff0066",
+            "#ff8800",
+            "#ffff00",
+            "#00ff66",
+            "#00ccff"
+        ];
+
+        let colorIndex = 0;
+
+        setInterval(() => {
+            document.getElementById("theme-color").setAttribute("content", colors[colorIndex]);
+            colorIndex = (colorIndex + 1) % colors.length;
+        }, 1500);
+
+        // Copy to clipboard functionality
+        const copyBtn = document.getElementById("copyBtn");
+        const copyManifestBtn = document.getElementById("copyManifestBtn");
+        const manifestCode = document.getElementById("manifestCode");
+        const copyFeedback = document.getElementById("copyFeedback");
+
+        function showCopyFeedback() {
+            copyFeedback.classList.add("show");
+            setTimeout(() => {
+                copyFeedback.classList.remove("show");
+            }, 2000);
+        }
+
+        copyBtn.addEventListener("click", () => {
+            const text = manifestCode.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                showCopyFeedback();
+            }).catch(err => {
+                alert("Failed to copy. Try selecting the text manually.");
+            });
+        });
+
+        copyManifestBtn.addEventListener("click", () => {
+            const text = manifestCode.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                showCopyFeedback();
+            }).catch(err => {
+                alert("Failed to copy. Try selecting the text manually.");
+            });
+        });
+
+        // Download extension as ZIP
+        const downloadBtn = document.getElementById("downloadBtn");
+
+        downloadBtn.addEventListener("click", async () => {
+            try {
+                const zip = new JSZip();
+
+                // Get the current page HTML
+                const indexHtml = document.documentElement.outerHTML;
+
+                // Manifest.json content
+                const manifest = {
+                    manifest_version: 3,
+                    name: "Rainbow Tab",
+                    version: "1.0",
+                    description: "Beautiful rainbow colored new tab page",
+                    action: {
+                        default_title: "Rainbow Tab"
+                    },
+                    chrome_url_overrides: {
+                        newtab: "index.html"
+                    }
+                };
+
+                // Add files to ZIP
+                zip.file("index.html", indexHtml);
+                zip.file("manifest.json", JSON.stringify(manifest, null, 2));
+
+                // Generate and download ZIP
+                const blob = await zip.generateAsync({ type: "blob" });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "RainbowTab.zip";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+
+                copyFeedback.textContent = "✓ Extension downloaded!";
+                showCopyFeedback();
+            } catch (error) {
+                alert("Error creating download. Please try again or use manual setup.");
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
